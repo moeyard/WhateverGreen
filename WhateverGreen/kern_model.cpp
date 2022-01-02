@@ -535,6 +535,10 @@ static constexpr Model dev6835[] {
 	{Model::DetectDef, 0x0000, 0x0000, 0x0000, "AMD Radeon R9 255"}
 };
 
+static constexpr Model dev6837[] {
+	{Model::DetectDef, 0x0000, 0x0000, 0x0000, "AMD Radeon HD 7700"}
+};
+
 static constexpr Model dev6839[] {
 	{Model::DetectDef, 0x0000, 0x0000, 0x0000, "AMD Radeon HD 7700"}
 };
@@ -808,6 +812,7 @@ static constexpr DevicePair devices[] {
 	{0x682d, dev682d, arrsize(dev682d)},
 	{0x682f, dev682f, arrsize(dev682f)},
 	{0x6835, dev6835, arrsize(dev6835)},
+	{0x6837, dev6837, arrsize(dev6837)},
 	{0x6839, dev6839, arrsize(dev6839)},
 	{0x683b, dev683b, arrsize(dev683b)},
 	{0x683d, dev683d, arrsize(dev683d)},

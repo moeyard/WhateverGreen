@@ -521,7 +521,8 @@ void WEG::processExternalProperties(IORegistryEntry *device, DeviceInfo *info, u
 		uint32_t acpiDevice = 0;
 		if (WIOKit::getOSDataValue(device, "device-id", acpiDevice)) {
 			DBGLOG("weg", "found AMD GPU with device-id 0x%04X actual 0x%04X", acpiDevice, realDevice);
-			if (acpiDevice != realDevice) {
+			//if (acpiDevice != realDevice) {
+			if (true) {
 				hasGfxSpoof = true;
 				KernelPatcher::routeVirtual(device, WIOKit::PCIConfigOffset::ConfigRead16, wrapConfigRead16, &orgConfigRead16);
 				KernelPatcher::routeVirtual(device, WIOKit::PCIConfigOffset::ConfigRead32, wrapConfigRead32, &orgConfigRead32);
@@ -767,8 +768,9 @@ uint32_t WEG::wrapConfigRead32(IORegistryEntry *service, uint32_t space, uint8_t
 			|| (callbackWEG->hasGfxSpoof && name[0] == 'G' && name[1] == 'F' && name[2] == 'X');
 		if (doSpoof) {
 			DBGLOG("weg", "configRead32 %s 0x%08X at off 0x%02X, result = 0x%08X", name, space, offset, result);
-			uint32_t device;
-			if (WIOKit::getOSDataValue(service, "device-id", device) && device != (result & 0xFFFF)) {
+			uint32_t device = 0x6839;
+			//if (WIOKit::getOSDataValue(service, "device-id", device) && device != (result & 0xFFFF)) {
+			if (device != (result & 0xFFFF)) {
 				device = (result & 0xFFFF) | (device << 16);
 				DBGLOG("weg", "configRead32 %s reported 0x%08x instead of 0x%08x", name, device, result);
 				return device;
