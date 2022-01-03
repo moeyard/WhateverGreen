@@ -77,7 +77,8 @@ static const char *powerGatingFlags[] {
 	"CAIL_DisableDynamicGfxMGPowerGating",
 	"CAIL_DisableGmcPowerGating",
 	"CAIL_DisableAcpPowerGating",
-	"CAIL_DisableSAMUPowerGating"
+	"CAIL_DisableSAMUPowerGating",
+	"CAIL_DisableStaticGfxMGPowerGating"
 };
 
 RAD *RAD::callbackRAD;
